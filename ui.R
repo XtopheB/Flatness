@@ -1,7 +1,8 @@
-# 28/05/2018 : Shiny app to compute  elements for the Flatness project
-# 28/06/2018 : Adding production function sliders
+# 28/05/2018: Shiny app to compute  elements for the Flatness project
+# 28/06/2018: Adding production function sliders
 # Use https://stackoverflow.com/questions/39040018/how-does-one-use-special-symbols-in-a-choices-list-as-names
-
+# 10/07/2018: Version 0.3. Prices on top of page 
+# 11/07/2018: Introduction of graps
 
 
 library(shiny)
@@ -12,11 +13,24 @@ shinyUI(fluidPage(
   # Application title
   titlePanel("Sensitivity of Optimal Production Choices to Risk Preferences "),
   tags$h5("Christophe Bontemps, Daoudia Boughera and Celine Nauges (2018)"),
+  tags$h5("Version 0.4"),
+  
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
    
     sidebarPanel(
+      HTML("<h3><font color='#2874A6'> Output./InputPrice ratio </font></h3>"),
+      br(),
+      sliderInput("p.level",
+                  "Output price (euros/t) ",
+                  min = 1,
+                  max = 110,
+                  step = 1,
+                  value = 11),
+      tags$p("Input price is normalized to 1"),
+      
+      
       HTML("<h3><font color='#2874A6'> Production technology </font></h3>"),
       br(),
       selectInput("Prod", 
@@ -25,12 +39,25 @@ shinyUI(fluidPage(
                     "State contingent" = "SC")
       ),
       conditionalPanel(condition = "input.Prod == 'JP'",
+     sliderInput("beta.f",
+                 "F lin. coef. (\u03B2.f)",
+                 min = 0,
+                 max = 30,
+                 step = 1,
+                 value = 15),              
+                       
        sliderInput("alpha.f",
                    "F exp. coef. (\u03B1.f)",
                    min = 0,
                    max = 0.5,
                    step = 0.01,
                    value = 0.3),
+      sliderInput("beta.g",
+                   "F lin. coef. (\u03B2.g)",
+                   min = 0,
+                   max = 50,
+                   step = 1,
+                   value = 30),       
        
        sliderInput("alpha.g",
                    "G exp. coef. (\u03B1.g)",
@@ -99,15 +126,9 @@ shinyUI(fluidPage(
       ),
       
       HTML("<h3><font color='#2874A6'> Prices </font></h3>"),
-      br(),
+      br()
       
-      sliderInput("p.level",
-                  "Output price (euros/t) ",
-                  min = 1,
-                  max = 25,
-                  step = 1,
-                  value = 11),
-      tags$p("Input price is normalized to 1")
+      
        
     ),
     
@@ -117,14 +138,17 @@ shinyUI(fluidPage(
         tabPanel("Results Table", tableOutput("FullTable"),
         paste("x* is the optimum input level "),
         br(),
-         paste("DeltaCE = ( CE(x*0) - CE(x*) ) / CE(x*0) , reported in % ")),
-       
-        tabPanel("Production function", plotOutput(""),
-                  paste("Graph to appear here soon... ")
-                  ),
-        tabPanel("Profit function", plotOutput(""),
-                  paste("Graph to appear here soon... ")
+         paste("DeltaCE = ( CE(x*0) - CE(x*) ) / CE(x*0) , reported in % "),
+        br(),
+        textOutput("ModelProd")
         ),
+       
+        tabPanel("Production functions", plotOutput("ProdGraph")
+                  ),
+        
+        tabPanel("Expected Profit", plotOutput("ProfGraph")
+        ),
+        
         tabPanel("Certain equivalent", plotOutput(""),
                   paste("Graph to appear here soon... ")
         )
