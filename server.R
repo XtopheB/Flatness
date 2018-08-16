@@ -1,6 +1,8 @@
 ### ---  Flatness project - ShinyFlat -- 
 # 26/06 Shiny file application working with only risk aversion parameter 
-# 26/062018  : Compatibilty with Flatness function file... 
+# 26/062018: Compatibilty with Flatness function file... 
+# 11/07/2018: Correction production fucntion in df$EW was not sensitive to parameters.. 
+# 15/08/2018: Correction (in global.R) on beta1 parameter that was not passed to utility function 
 
 library(shiny)
 library(data.table)
@@ -82,7 +84,7 @@ output$FullTable <- renderTable({
     else if (input$Risk == "CPT"){
       df$EU <- f.EU.CPT(x, 
                         beta0 = 0, 
-                       beta1 = input$beta.f,
+                        beta1 = input$beta.f,
                         a1 = input$alpha.f,
                         beta2 = input$beta.g,
                         a2 = input$alpha.g,

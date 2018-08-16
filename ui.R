@@ -12,8 +12,8 @@ shinyUI(fluidPage(
   
   # Application title
   titlePanel("Sensitivity of Optimal Production Choices to Risk Preferences "),
-  tags$h5("Christophe Bontemps, Daoudia Boughera and Celine Nauges (2018)"),
-  tags$h5("Version 0.4"),
+  tags$h5("Christophe Bontemps, Douadia Bougherara and Celine Nauges (2018)"),
+  tags$h5("Version 0.5"),
   
   
   # Sidebar with a slider input for number of bins 
@@ -136,10 +136,11 @@ shinyUI(fluidPage(
     mainPanel(
       tabsetPanel(
         tabPanel("Results Table", tableOutput("FullTable"),
-        paste("x* is the optimum input level "),
-        br(),
-         paste("DeltaCE = ( CE(x*0) - CE(x*) ) / CE(x*0) , reported in % "),
-        br(),
+        HTML(
+          paste("x* is the optimum input level",'<br/>',
+         "DeltaCE = ( CE(x*0) - CE(x*) ) / CE(x*0) , reported in % ",'<br/>', "")
+        ),
+        textOutput(""),
         textOutput("ModelProd")
         ),
        

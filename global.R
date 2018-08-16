@@ -1,5 +1,5 @@
 ## Functions used in the Shiny app 
-## 2/07/2018 : transformation of the server file- moving fucntions here
+## 2/07/2018 : transformation of the server file- moving funcions here
 
 
 f.prod <- function(x, 
@@ -62,16 +62,16 @@ f.EU <- function(x,
                  r = 0,
                  cx = 1,
                  px =11,
-                 eps.bad,
-                 eps.avg,
-                 eps.good,
+                 eps.bad = 0,
+                 eps.avg = 0,
+                 eps.good= 0,
                  ...)
 {
   
   # profit
-  pi.bad <- px* f.prod(x, state.nat = eps.bad , a1 = a1, a2 = a2 ) - cx*x
-  pi.avg <- px* f.prod(x, state.nat = eps.avg, a1 = a1, a2 = a2 ) - cx*x
-  pi.good <- px* f.prod(x, state.nat = eps.good, a1 = a1, a2 = a2 ) - cx*x
+  pi.bad <- px* f.prod(x, state.nat = eps.bad , a1 = a1, beta1=beta1, beta2= beta2, a2 = a2 ) - cx*x
+  pi.avg <- px* f.prod(x, state.nat = eps.avg, a1 = a1, beta1=beta1, beta2= beta2, a2 = a2 ) - cx*x
+  pi.good <- px* f.prod(x, state.nat = eps.good, a1 = a1, beta1=beta1, beta2= beta2, a2 = a2 ) - cx*x
   
   #profit utility
   U.bad <- U.CRRA(pi.bad, r = r)
