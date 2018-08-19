@@ -269,6 +269,7 @@ output$ProfGraph <- renderPlot({
             subtitle =  paste("Production function =",input$beta.f," * x^", input$alpha.f, " +",input$beta.g,"* x^",input$alpha.g," * eps" ))+
     labs( x= "Input (EUR/ha)" ,
           y = "Profit (EUR/ha)") +
+    scale_y_continuous( c(0,max(df.prof$EW))) +
     theme_minimal()
  # plot(x,x)
 })

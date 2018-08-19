@@ -20,15 +20,15 @@ shinyUI(fluidPage(
   sidebarLayout(
    
     sidebarPanel(
-      HTML("<h3><font color='#2874A6'> Output./InputPrice ratio </font></h3>"),
+      HTML("<h3><font color='#2874A6'> Output/Input Price ratio </font></h3>"),
       br(),
       sliderInput("p.level",
                   "Output price (EUR/q) ",
                   min = 1,
-                  max = 110,
+                  max = 30,
                   step = 1,
                   value = 11),
-      tags$p("Input price is normalized to 1"),
+      tags$p("Input price is normalized to 1 (EUR/q)"),
       
       
       HTML("<h3><font color='#2874A6'> Production technology </font></h3>"),
@@ -123,10 +123,7 @@ shinyUI(fluidPage(
                                    step = 0.01,
                                    value = 0.69)
                        
-      ),
-      
-      HTML("<h3><font color='#2874A6'> Prices </font></h3>"),
-      br()
+      )
       
       
        
