@@ -13,7 +13,7 @@ shinyUI(fluidPage(
   # Application title
   titlePanel("Sensitivity of Optimal Production Choices to Risk Preferences "),
   tags$h5("Christophe Bontemps, Douadia Bougherara and Celine Nauges (2018)"),
-  tags$h5("Version 0.5"),
+  tags$h5("Version 0.6"),
   
   
   # Sidebar with a slider input for number of bins 
@@ -23,7 +23,7 @@ shinyUI(fluidPage(
       HTML("<h3><font color='#2874A6'> Output./InputPrice ratio </font></h3>"),
       br(),
       sliderInput("p.level",
-                  "Output price (euros/t) ",
+                  "Output price (EUR/q) ",
                   min = 1,
                   max = 110,
                   step = 1,

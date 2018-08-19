@@ -228,7 +228,7 @@ output$ProdGraph <- renderPlot({
     geom_dl(aes(x, Ygood,label = " Bad"), method = list(dl.combine( "last.points"), cex = 1, colour = "blue", alpha= myalpha))+
     ggtitle(label = paste("Production function under the 3 states of nature (N=", Ns,")") ,
             subtitle =  paste("Production function =",input$beta.f," * x^", input$alpha.f, " +",input$beta.g,"* x^",input$alpha.g," * eps" ))+
-    labs( x= "Input (???/ha)" ,
+    labs( x= "Input (EUR/ha)" ,
           y = "Yield (Q/ha)") +
     theme_minimal()
   #plot(x,x)
@@ -267,8 +267,8 @@ output$ProfGraph <- renderPlot({
     geom_dl(aes(x, EW,label = " Expected Prof."), method = list(dl.combine( "last.points"), cex = 1, colour = "red", alpha= myalpha)) +
     ggtitle(label = paste("Expected Profit") ,
             subtitle =  paste("Production function =",input$beta.f," * x^", input$alpha.f, " +",input$beta.g,"* x^",input$alpha.g," * eps" ))+
-    labs( x= "Input (???/ha)" ,
-          y = "Profit (euro/ha)") +
+    labs( x= "Input (EUR/ha)" ,
+          y = "Profit (EUR/ha)") +
     theme_minimal()
  # plot(x,x)
 })
