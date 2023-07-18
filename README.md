@@ -5,3 +5,4 @@ by Christophe Bontemps,  Douadia Bougherara & Céline Nauges, Published in Envir
 https://doi.org/10.1007/s10666-021-09756-8
 
 All programs and interactive tools for this research program (R, Rmd and R-Shiny)
+See also the shiny app: https://xtophedataviz.shinyapps.io/Flatness2/
